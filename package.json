@@ -1,0 +1,26 @@
+{
+  "name": "pixel-agents-docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pablodelucca/pixel-agents-docs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/pablodelucca/pixel-agents-docs/issues"
+  },
+  "homepage": "https://github.com/pablodelucca/pixel-agents-docs#readme",
+  "devDependencies": {
+    "vitepress": "^2.0.0-alpha.17"
+  }
+}
