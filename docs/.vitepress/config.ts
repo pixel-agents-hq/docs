@@ -22,8 +22,17 @@ export default defineConfig({
       {
         text: 'Using the Office',
         items: [
-          { text: 'Layout Editor', link: '/guide/layout-editor' },
-          { text: 'Office Assets', link: '/guide/office-assets' }
+          { text: 'Layout Editor', link: '/guide/layout-editor' }
+        ]
+      },
+      {
+        text: 'Assets',
+        items: [
+          { text: 'Overview', link: '/guide/assets' },
+          { text: 'Characters', link: '/guide/characters' },
+          { text: 'Furniture', link: '/guide/furniture' },
+          { text: 'Walls', link: '/guide/walls' },
+          { text: 'Floors', link: '/guide/floors' }
         ]
       },
       {
@@ -32,16 +41,19 @@ export default defineConfig({
           { text: 'How It Works', link: '/guide/how-it-works' },
           { text: 'Troubleshooting', link: '/guide/troubleshooting' }
         ]
+      },
+      {
+        text: 'Community',
+        items: [
+          { text: 'Contributing', link: '/guide/contributing' },
+          { text: 'Roadmap', link: '/guide/roadmap' }
+        ]
       }
-    ],
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/pablodelucca/pixel-agents' }
     ],
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright 2025-present Pablo De Lucca'
+      copyright: 'Copyright 2026 Pablo De Lucca'
     },
 
     editLink: {
