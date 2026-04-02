@@ -4,6 +4,10 @@ export default defineConfig({
   title: 'Pixel Agents',
   description: 'The game interface where AI agents build real things',
 
+  head: [
+    ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }]
+  ],
+
   themeConfig: {
     nav: [
       { text: 'Guide', link: '/guide/what-is-pixel-agents' },
