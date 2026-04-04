@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: 'Pixel Agents',
   description: 'The game interface where AI agents build real things',
+  base: '/pixel-agents-docs/',
 
   head: [
     ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }]
