@@ -1,6 +1,14 @@
+import path from 'path'
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+  vite: {
+    resolve: {
+      alias: {
+        '@pixel-agents-openapi': path.resolve(__dirname, '../../../pixel-agents/server/openapi.json')
+      }
+    }
+  },
   title: 'Pixel Agents',
   description: 'The game interface where AI agents build real things',
   base: '/pixel-agents-docs/',
@@ -44,6 +52,7 @@ export default defineConfig({
         text: 'Advanced',
         items: [
           { text: 'How It Works', link: '/guide/how-it-works' },
+          { text: 'Hooks Server', link: '/guide/hooks-server' },
           { text: 'Troubleshooting', link: '/guide/troubleshooting' }
         ]
       },
