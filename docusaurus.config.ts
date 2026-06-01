@@ -66,7 +66,7 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       copyright: `Released under MIT License. Copyright ${new Date().getFullYear()} Pablo De Lucca.`,
     },
     // Algolia DocSearch — fill in after DocSearch approval

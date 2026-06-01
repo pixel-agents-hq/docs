@@ -12,7 +12,7 @@ const DRAW_H = FRAME_H * SCALE;
 const WALK_FRAME_DURATION = 150; // ms per frame
 const WALK_SPEED = 0.75; // px per frame (at scale)
 const NUM_CHARACTERS = 6;
-const SPACING = DRAW_W + 6;
+const SPACING = DRAW_W + 14;
 
 // Directions → sprite sheet rows
 const DIR_DOWN = 0;
@@ -29,7 +29,8 @@ interface CharState {
   dir: number;
   state: 'idle' | 'walk';
   frame: number;
-  timer: number; // ms until next state change
+  timer: number; // ms until next state change (idle only)
+  targetX: number; // destination x when walking
   frameTimer: number; // ms until next animation frame
 }
 
@@ -45,23 +46,30 @@ function initCharacter(index: number, canvasWidth: number): CharState {
     dir: DIR_DOWN,
     state: 'idle',
     frame: 0,
-    timer: randomBetween(800, 4000 + index * 500),
+    timer: randomBetween(2000, 10000),
+    targetX: startX,
     frameTimer: 0,
   };
 }
 
-function pickNewState(ch: CharState): void {
-  const roll = Math.random();
-  if (roll < 0.55) {
-    // Walk in a direction
-    ch.state = 'walk';
-    ch.dir = Math.random() < 0.5 ? DIR_LEFT : DIR_RIGHT;
-    ch.timer = randomBetween(2000, 5000);
-  } else {
-    // Stand idle, possibly face a new direction
+function pickNewState(ch: CharState, minX: number, maxX: number): void {
+  if (ch.state === 'walk') {
+    // Always pause after walking
     ch.state = 'idle';
     ch.dir = [DIR_DOWN, DIR_UP, DIR_LEFT, DIR_RIGHT][Math.floor(Math.random() * 4)];
-    ch.timer = randomBetween(2000, 6000);
+    ch.timer = randomBetween(1500, 5000);
+  } else {
+    // After idling, either walk to a random position or idle facing a new direction
+    const roll = Math.random();
+    if (roll < 0.6) {
+      ch.state = 'walk';
+      ch.targetX = randomBetween(minX, maxX);
+      ch.dir = ch.targetX < ch.x ? DIR_LEFT : DIR_RIGHT;
+    } else {
+      ch.state = 'idle';
+      ch.dir = [DIR_DOWN, DIR_UP, DIR_LEFT, DIR_RIGHT][Math.floor(Math.random() * 4)];
+      ch.timer = randomBetween(2000, 6000);
+    }
   }
   ch.frame = 0;
   ch.frameTimer = 0;
@@ -114,22 +122,23 @@ export default function AnimatedCharacters(): React.ReactElement {
       const maxX = canvasWidth - DRAW_W - 4;
 
       for (const ch of chars) {
-        ch.timer -= dt;
-        if (ch.timer <= 0) {
-          pickNewState(ch);
-        }
-
-        if (ch.state === 'walk') {
+        if (ch.state === 'idle') {
+          ch.timer -= dt;
+          if (ch.timer <= 0) {
+            pickNewState(ch, minX, maxX);
+          }
+        } else if (ch.state === 'walk') {
           const dx = ch.dir === DIR_LEFT ? -WALK_SPEED : WALK_SPEED;
-          ch.x += dx * (dt / 16); // normalize to ~60fps
+          ch.x += dx * (dt / 16);
 
-          // Bounce off edges
-          if (ch.x < minX) {
-            ch.x = minX;
-            ch.dir = DIR_RIGHT;
-          } else if (ch.x > maxX) {
-            ch.x = maxX;
-            ch.dir = DIR_LEFT;
+          // Check if reached target
+          const arrived = ch.dir === DIR_LEFT
+            ? ch.x <= ch.targetX
+            : ch.x >= ch.targetX;
+
+          if (arrived) {
+            ch.x = ch.targetX;
+            pickNewState(ch, minX, maxX); // transitions to idle pause
           }
 
           // Advance walk animation
