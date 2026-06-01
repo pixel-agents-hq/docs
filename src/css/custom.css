@@ -12,6 +12,10 @@
   --pixel-font: 'FS Pixel Sans', monospace;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 /* ── Light mode colors ── */
 
 :root {

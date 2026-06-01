@@ -61,7 +61,11 @@
 }
 
 .characters {
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
   animation: fadeInUp 0.6s ease-out both;
   animation-delay: 0s;
 }
@@ -71,7 +75,7 @@
   font-size: 42px;
   font-weight: bold;
   color: var(--ifm-color-primary-light);
-  line-height: 1.2;
+  line-height: 1;
   padding-top: 6px;
   padding-bottom: 4px;
   margin-bottom: 12px;
