@@ -7,7 +7,7 @@ const config: Config = {
   favicon: 'img/favicon.png',
 
   url: 'https://pixel-agents-hq.github.io',
-  baseUrl: '/',
+  baseUrl: '/docs/',
 
   organizationName: 'pixel-agents-hq',
   projectName: 'docs',
