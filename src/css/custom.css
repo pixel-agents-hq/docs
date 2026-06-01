@@ -239,3 +239,31 @@ html[data-theme='dark']::after {
     rgba(0, 0, 0, 0.4) 100%
   );
 }
+
+/* ── CRT toggle button ── */
+
+.crt-toggle-btn {
+  font-family: var(--pixel-font);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 4px 8px;
+  background: none;
+  border: none;
+  color: inherit;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.crt-toggle-btn:hover {
+  color: var(--ifm-color-primary) !important;
+}
+
+/* ── CRT off toggle ── */
+
+html.crt-off {
+  filter: none;
+}
+
+html.crt-off::before,
+html.crt-off::after {
+  display: none;
+}
