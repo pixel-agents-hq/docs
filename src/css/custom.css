@@ -1,0 +1,166 @@
+@font-face {
+  font-family: 'FS Pixel Sans';
+  src: url('./fonts/FSPixelSansUnicode-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Pixel font variable ── */
+
+:root {
+  --pixel-font: 'FS Pixel Sans', monospace;
+}
+
+/* ── Light mode colors ── */
+
+:root {
+  --ifm-color-primary: #6030ff;
+  --ifm-color-primary-dark: #746fff;
+  --ifm-color-primary-darker: #9a8fff;
+  --ifm-color-primary-darkest: #c0b5ff;
+  --ifm-color-primary-light: #5028dd;
+  --ifm-color-primary-lighter: #4020bb;
+  --ifm-color-primary-lightest: #301899;
+  --ifm-font-size-base: 16px;
+}
+
+/* ── Dark mode colors (matching VS Code extension) ── */
+
+html[data-theme='dark'] {
+  --ifm-color-primary: #746fff;
+  --ifm-color-primary-dark: #6030ff;
+  --ifm-color-primary-darker: #5028dd;
+  --ifm-color-primary-darkest: #4020bb;
+  --ifm-color-primary-light: #9a8fff;
+  --ifm-color-primary-lighter: #c0b5ff;
+  --ifm-color-primary-lightest: #e0daff;
+
+  --ifm-background-color: #16162a;
+  --ifm-background-surface-color: #111122;
+  --ifm-color-emphasis-0: #181828;
+  --ifm-color-emphasis-100: #20203a;
+  --ifm-color-emphasis-200: #2a2a4a;
+  --ifm-color-emphasis-300: #3c3c60;
+  --ifm-color-emphasis-400: #505074;
+  --ifm-color-emphasis-500: #686890;
+  --ifm-color-emphasis-600: #8888a8;
+  --ifm-color-emphasis-700: #a8a8c4;
+  --ifm-color-emphasis-800: #c4c4d8;
+  --ifm-color-emphasis-900: #dcdce8;
+  --ifm-color-emphasis-1000: #eeeeF4;
+
+  --ifm-toc-border-color: #3a3a5c;
+  --ifm-hr-border-color: #3a3a5c;
+
+  --ifm-navbar-background-color: #111122;
+  --ifm-footer-background-color: #16162a;
+}
+
+html[data-theme='dark'] {
+  background-color: #16162a;
+}
+
+/* Make Layout wrapper fill viewport for vertical centering */
+[class*='docMainContainer'],
+[class*='wrapper'] > main {
+  display: flex;
+  flex: 1;
+}
+
+.footer--dark {
+  --ifm-footer-background-color: #111122;
+  background-color: #111122;
+  padding: 12px 0;
+  font-family: 'FS Pixel Sans', monospace;
+  font-size: 24px;
+  line-height: 0.75;
+  animation: fadeIn 0.4s ease-out both;
+  animation-delay: 0.6s;
+}
+
+[data-theme='dark'] .menu {
+  background-color: #111122;
+  --ifm-menu-color: #ffffffcc;
+}
+
+[data-theme='dark'] .navbar-sidebar {
+  background-color: #111122;
+}
+
+[data-theme='dark'] button.clean-btn {
+  background-color: #111122;
+  color: #ffffffcc;
+}
+
+[data-theme='dark'] button.clean-btn:hover {
+  background-color: #1a1a33;
+}
+
+[data-theme='dark'] .navbar__toggle {
+  background-color: transparent;
+  color: #ffffffcc;
+}
+
+.navbar-sidebar .menu__link {
+  font-family: var(--pixel-font);
+  font-size: 24px;
+}
+
+/* ── Pixel font for headings ── */
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  font-family: var(--pixel-font);
+  letter-spacing: 1px;
+}
+
+.markdown h1 {
+  font-size: 64px;
+  color: var(--ifm-color-primary-light);
+}
+
+.markdown h2 {
+  font-size: 48px;
+  color: var(--ifm-color-primary-light);
+}
+
+.markdown h3 {
+  font-size: 32px;
+}
+
+.markdown h4 {
+  font-size: 32px;
+}
+
+/* ── Navbar ── */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.navbar__title {
+  font-family: var(--pixel-font);
+  font-size: 36px;
+  line-height: 0.8;
+}
+
+.navbar__link {
+  font-family: var(--pixel-font);
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+/* ── Sidebar group titles ── */
+
+.menu__list-item-collapsible > .menu__link {
+  font-family: var(--pixel-font);
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  color: var(--ifm-color-primary-light);
+}

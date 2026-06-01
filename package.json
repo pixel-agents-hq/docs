@@ -1,26 +1,47 @@
 {
   "name": "pixel-agents-docs",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "serve": "docusaurus serve",
+    "clear": "docusaurus clear",
+    "swizzle": "docusaurus swizzle"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pablodelucca/pixel-agents-docs.git"
+    "url": "git+https://github.com/pixel-agents-hq/docs.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/pablodelucca/pixel-agents-docs/issues"
+    "url": "https://github.com/pixel-agents-hq/docs/issues"
   },
-  "homepage": "https://github.com/pablodelucca/pixel-agents-docs#readme",
+  "homepage": "https://github.com/pixel-agents-hq/docs#readme",
+  "dependencies": {
+    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/preset-classic": "^3.7.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
-    "vitepress": "^2.0.0-alpha.17"
+    "@docusaurus/tsconfig": "^3.7.0",
+    "@docusaurus/types": "^3.7.0",
+    "typescript": "~5.6.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0"
   }
 }
