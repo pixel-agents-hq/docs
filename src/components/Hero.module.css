@@ -11,6 +11,34 @@
   }
 }
 
+@keyframes retroGlow {
+  0% {
+    text-shadow:
+      3px 0 0 #ff004d,
+      -3px 0 0 #29adff;
+  }
+  25% {
+    text-shadow:
+      3px 1px 0 #ff77a8,
+      -3px -1px 0 #00e436;
+  }
+  50% {
+    text-shadow:
+      -1px 3px 0 #ffec27,
+      1px -3px 0 #7e2553;
+  }
+  75% {
+    text-shadow:
+      -3px 0 0 #29adff,
+      3px 0 0 #ff004d;
+  }
+  100% {
+    text-shadow:
+      3px 0 0 #ff004d,
+      -3px 0 0 #29adff;
+  }
+}
+
 /* ── Hero ── */
 
 .hero {
@@ -28,22 +56,14 @@
   font-size: 128px;
   line-height: 0.7;
   margin-bottom: 12px;
-  animation: fadeInUp 0.6s ease-out both;
-  animation-delay: 0.1s;
+  animation: fadeInUp 0.6s ease-out both, retroGlow 4s linear infinite;
+  animation-delay: 0.1s, 0.7s;
 }
 
 .characters {
-  width: 320px;
-  height: 72px;
   margin: 0 auto;
   animation: fadeInUp 0.6s ease-out both;
   animation-delay: 0s;
-  image-rendering: pixelated;
-  filter:
-    drop-shadow(2px 0 0 rgba(255, 255, 255, 0.33))
-    drop-shadow(-2px 0 0 rgba(255, 255, 255, 0.33))
-    drop-shadow(0 2px 0 rgba(255, 255, 255, 0.33))
-    drop-shadow(0 -2px 0 rgba(255, 255, 255, 0.33));
 }
 
 .heroSubtitle {
@@ -65,7 +85,7 @@
   color: var(--ifm-color-emphasis-700);
   margin-bottom: 32px;
   animation: fadeInUp 0.6s ease-out both;
-  animation-delay: 0.3s;
+  animation-delay: 0.35s;
 }
 
 .heroButtons {
@@ -75,6 +95,12 @@
   flex-wrap: wrap;
   animation: fadeInUp 0.6s ease-out both;
   animation-delay: 0.4s;
+}
+
+@keyframes pixelBounce {
+  0%, 100% { transform: translateY(0); }
+  33% { transform: translateY(-2px); }
+  66% { transform: translateY(1px); }
 }
 
 .heroBtnPrimary {
@@ -93,6 +119,7 @@
   background-color: var(--ifm-color-primary);
   color: #fff;
   text-decoration: none;
+  animation: pixelBounce 0.5s steps(3) infinite;
 }
 
 .heroBtnSecondary {
@@ -106,6 +133,10 @@
   color: var(--ifm-font-color-base);
   text-decoration: none;
   transition: border-color 0.2s;
+}
+
+.heroBtnSecondary:hover {
+  animation: pixelBounce 0.5s steps(3) infinite;
 }
 
 .heroBtnSecondary:hover {

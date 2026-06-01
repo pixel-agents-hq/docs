@@ -114,7 +114,6 @@ html[data-theme='dark'] {
 .markdown h3,
 .markdown h4 {
   font-family: var(--pixel-font);
-  letter-spacing: 1px;
 }
 
 .markdown h1 {
@@ -163,4 +162,77 @@ html[data-theme='dark'] {
   line-height: 1.6;
   letter-spacing: 1px;
   color: var(--ifm-color-primary-light);
+}
+
+/* ── CRT retro effect ── */
+
+html {
+  filter: brightness(1.2) saturate(1.2);
+}
+
+html::before,
+html::after {
+  filter: brightness(1) saturate(1);
+}
+
+@keyframes scanlineScroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 4px; }
+}
+
+@keyframes crtFlicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.8; }
+  94% { opacity: 1; }
+  96% { opacity: 0.9; }
+  97% { opacity: 1; }
+}
+
+html::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  animation: scanlineScroll 0.3s linear infinite;
+}
+
+html::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 60%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  animation: crtFlicker 6s steps(1) infinite;
+}
+
+html[data-theme='dark']::before {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+}
+
+html[data-theme='dark']::after {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
 }

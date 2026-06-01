@@ -9,6 +9,12 @@
   }
 }
 
+@keyframes pixelBounce {
+  0%, 100% { transform: translateY(0); }
+  33% { transform: translateY(-2px); }
+  66% { transform: translateY(1px); }
+}
+
 /* ── Feature Cards ── */
 
 .features {
@@ -62,6 +68,10 @@
   color: var(--ifm-color-primary-light);
   font-size: 24px;
   margin-bottom: 8px;
+}
+
+.featureCard:hover .featureTitle {
+  animation: pixelBounce 0.5s steps(3) infinite;
 }
 
 .featureDescription {
