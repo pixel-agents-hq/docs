@@ -1,17 +1,15 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import AnimatedCharacters from './AnimatedCharacters';
 import styles from './Hero.module.css';
 
 export default function Hero(): React.ReactElement {
   return (
     <header className={styles.hero}>
       <div className={styles.heroInner}>
-        <img
-          src={useBaseUrl('/img/characters.png')}
-          alt="Pixel characters"
-          className={styles.characters}
-        />
+        <div className={styles.characters}>
+          <AnimatedCharacters />
+        </div>
         <h1 className={styles.heroTitle}>PIXEL AGENTS</h1>
         <p className={styles.heroSubtitle}>
           The game interface where AI agents build real things
@@ -21,7 +19,7 @@ export default function Hero(): React.ReactElement {
           that turns your AI agents into characters in a pixel art office.
         </p>
         <div className={styles.heroButtons}>
-          <Link className={styles.heroBtnPrimary} to="/docs/introduction/getting-started">
+          <Link className={styles.heroBtnPrimary} to="/introduction/getting-started">
             Get Started
           </Link>
           <Link

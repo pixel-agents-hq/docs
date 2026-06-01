@@ -7,25 +7,25 @@ const features = [
     title: 'Get Started',
     description:
       'Install the extension, set up Claude Code, and spawn your first agent in minutes.',
-    link: '/docs/introduction/getting-started',
+    link: '/introduction/getting-started',
   },
   {
     title: 'Assets',
     description:
       'Explore characters, furniture, walls, and floors — or create your own custom asset packs.',
-    link: '/docs/assets/overview',
+    link: '/assets/overview',
   },
   {
     title: 'Contributing',
     description:
       'Learn how to contribute to Pixel Agents — from bug reports to new features and asset packs.',
-    link: '/docs/community/contributing',
+    link: '/community/contributing',
   },
   {
     title: 'Roadmap',
     description:
       "See where Pixel Agents is headed — agent-agnostic adapters, deep inspection, token health bars, and more.",
-    link: '/docs/community/roadmap',
+    link: '/community/roadmap',
   },
 ];
 
