@@ -152,6 +152,7 @@ html[data-theme='dark'] {
   font-family: var(--pixel-font);
   font-size: 36px;
   line-height: 0.8;
+  padding-bottom: 5px;
 }
 
 .navbar__link {
@@ -259,6 +260,18 @@ html[data-theme='dark']::after {
 
 .crt-toggle-btn:hover {
   color: var(--ifm-color-primary) !important;
+}
+
+.menu__list .crt-toggle-btn {
+  width: 100%;
+  text-align: left;
+  padding: 6px 12px;
+}
+
+@media (max-width: 996px) {
+  .navbar__items--right .crt-toggle-btn {
+    display: none;
+  }
 }
 
 /* ── CRT off toggle ── */

@@ -54,7 +54,7 @@
 .heroTitle {
   font-family: var(--pixel-font);
   font-size: 128px;
-  line-height: 0.7;
+  line-height: 0.6;
   margin-bottom: 12px;
   animation: fadeInUp 0.6s ease-out both, retroGlow 4s linear infinite;
   animation-delay: 0.1s, 0.7s;

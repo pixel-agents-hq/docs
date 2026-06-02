@@ -12,7 +12,7 @@ export default function Hero(): React.ReactElement {
         </div>
         <h1 className={styles.heroTitle}>PIXEL AGENTS</h1>
         <p className={styles.heroSubtitle}>
-          The game interface where AI agents build real things
+          Play a Game, Build a Product.
         </p>
         <p className={styles.heroTagline}>
           Learn how to install, configure, and customize Pixel Agents — the app

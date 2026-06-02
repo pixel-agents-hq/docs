@@ -63,6 +63,10 @@ const config: Config = {
           label: 'GitHub',
           position: 'right',
         },
+        {
+          type: 'custom-crtToggle',
+          position: 'right',
+        },
       ],
     },
     footer: {

@@ -5,3 +5,9 @@
   width: 100%;
   flex: 1;
 }
+
+@media (max-width: 996px) {
+  .homeContent {
+    padding: 48px 0;
+  }
+}
