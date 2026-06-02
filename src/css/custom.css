@@ -59,6 +59,8 @@ html[data-theme='dark'] {
 
   --ifm-navbar-background-color: #111122;
   --ifm-footer-background-color: #16162a;
+
+  --crt-vignette: 0.4;
 }
 
 html[data-theme='dark'] {
@@ -173,14 +175,30 @@ html[data-theme='dark'] {
 }
 
 /* ── CRT retro effect ── */
+/* Adjust --crt-intensity between 0 and 1 to control effect strength */
 
-html {
-  filter: brightness(1.2) saturate(1.2);
+:root {
+  --crt-intensity: 0.5;
+  --crt-brightness: 1.2;
+  --crt-saturation: 1.5;
+  --crt-vignette: 0.1;
+  --crt-red: rgb(218, 49, 49);
+  --crt-green: rgb(112, 159, 115);
+  --crt-blue: rgb(40, 129, 206);
 }
 
-html::before,
-html::after {
-  filter: brightness(1) saturate(1);
+html {
+  filter:
+    brightness(var(--crt-brightness))
+    saturate(var(--crt-saturation));
+}
+
+/* RGB grid + chromatic text shadow: dark mode only */
+html[data-theme='dark'] {
+  text-shadow:
+    0 0 calc(0.24em * var(--crt-intensity)) currentColor,
+    calc(1px * var(--crt-intensity)) calc(1px * var(--crt-intensity)) rgba(255, 0, 255, calc(0.5 * var(--crt-intensity))),
+    calc(-1px * var(--crt-intensity)) calc(-1px * var(--crt-intensity)) rgba(0, 255, 255, calc(0.4 * var(--crt-intensity)));
 }
 
 @keyframes scanlineScroll {
@@ -191,58 +209,61 @@ html::after {
 @keyframes crtFlicker {
   0%, 100% { opacity: 1; }
   92% { opacity: 1; }
-  93% { opacity: 0.8; }
+  93% { opacity: calc(1 - 0.15 * var(--crt-intensity)); }
   94% { opacity: 1; }
-  96% { opacity: 0.9; }
+  96% { opacity: calc(1 - 0.08 * var(--crt-intensity)); }
   97% { opacity: 1; }
 }
 
-html::before {
+html::before,
+html::after {
   content: '';
+  transform: translateZ(0);
+  pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 9999;
-  pointer-events: none;
+}
+
+/* Scanlines (both modes) */
+html::before {
   background: repeating-linear-gradient(
     to bottom,
     transparent 0px,
     transparent 2px,
-    rgba(0, 0, 0, 0.08) 2px,
-    rgba(0, 0, 0, 0.08) 4px
+    rgba(0, 0, 0, calc(0.15 * var(--crt-intensity))) 2px,
+    rgba(0, 0, 0, calc(0.15 * var(--crt-intensity))) 4px
   );
   animation: scanlineScroll 0.3s linear infinite;
 }
 
+/* RGB grid layered on top of scanlines in dark mode */
+html[data-theme='dark']::before {
+  mix-blend-mode: overlay;
+  opacity: calc(0.8 * var(--crt-intensity));
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(0, 0, 0, 0.3) 2px,
+      rgba(0, 0, 0, 0.3) 4px
+    ),
+    repeating-linear-gradient(
+      var(--crt-red) 0px,
+      var(--crt-green) 2px,
+      var(--crt-blue) 4px
+    );
+}
+
+/* Vignette + flicker (both modes) */
 html::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
   background: radial-gradient(
     ellipse at center,
-    transparent 60%,
-    rgba(0, 0, 0, 0.25) 100%
+    transparent calc(60% - 20% * var(--crt-vignette)),
+    rgba(0, 0, 0, var(--crt-vignette)) 100%
   );
   animation: crtFlicker 6s steps(1) infinite;
-}
-
-html[data-theme='dark']::before {
-  background: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 2px,
-    rgba(0, 0, 0, 0.12) 2px,
-    rgba(0, 0, 0, 0.12) 4px
-  );
-}
-
-html[data-theme='dark']::after {
-  background: radial-gradient(
-    ellipse at center,
-    transparent 55%,
-    rgba(0, 0, 0, 0.4) 100%
-  );
 }
 
 /* ── CRT toggle button ── */
@@ -278,6 +299,7 @@ html[data-theme='dark']::after {
 
 html.crt-off {
   filter: none;
+  text-shadow: none;
 }
 
 html.crt-off::before,

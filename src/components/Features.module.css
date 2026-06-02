@@ -71,7 +71,7 @@
 }
 
 .featureCard:hover .featureTitle {
-  animation: pixelBounce 0.5s steps(3) infinite;
+  animation: pixelBounce 0.6s steps(3) infinite;
 }
 
 .featureDescription {

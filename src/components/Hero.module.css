@@ -124,7 +124,7 @@
   background-color: var(--ifm-color-primary);
   color: #fff;
   text-decoration: none;
-  animation: pixelBounce 0.5s steps(3) infinite;
+  animation: pixelBounce 0.6s steps(3) infinite;
 }
 
 .heroBtnSecondary {
@@ -141,7 +141,7 @@
 }
 
 .heroBtnSecondary:hover {
-  animation: pixelBounce 0.5s steps(3) infinite;
+  animation: pixelBounce 0.6s steps(3) infinite;
 }
 
 .heroBtnSecondary:hover {
