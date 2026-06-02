@@ -60,6 +60,7 @@ html[data-theme='dark'] {
   --ifm-navbar-background-color: #111122;
   --ifm-footer-background-color: #16162a;
 
+  --crt-scanline-opacity: 0.2;
   --crt-vignette: 0.4;
 }
 
@@ -181,6 +182,7 @@ html[data-theme='dark'] {
   --crt-intensity: 0.5;
   --crt-brightness: 1.2;
   --crt-saturation: 1.5;
+  --crt-scanline-opacity: 0.04;
   --crt-vignette: 0.1;
   --crt-red: rgb(218, 49, 49);
   --crt-green: rgb(112, 159, 115);
@@ -231,8 +233,8 @@ html::before {
     to bottom,
     transparent 0px,
     transparent 2px,
-    rgba(0, 0, 0, calc(0.15 * var(--crt-intensity))) 2px,
-    rgba(0, 0, 0, calc(0.15 * var(--crt-intensity))) 4px
+    rgba(0, 0, 0, var(--crt-scanline-opacity)) 2px,
+    rgba(0, 0, 0, var(--crt-scanline-opacity)) 4px
   );
   animation: scanlineScroll 0.3s linear infinite;
 }
