@@ -125,7 +125,7 @@ export default function Hero(): React.ReactElement {
         </p>
         <div className={styles.heroButtons}>
           <Link className={styles.heroBtnPrimary} to="/start/install">
-            Get Started
+            Install
           </Link>
           <Link
             className={styles.heroBtnSecondary}

@@ -129,12 +129,22 @@
 }
 
 .heroButtons {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
+  width: fit-content;
+  margin: 0 auto;
   animation: fadeInUp 0.6s ease-out both;
   animation-delay: 0.4s;
+}
+
+/* Both buttons share the width of the widest one. Stack them once two
+   pixel-font buttons no longer fit side by side. */
+@media (max-width: 576px) {
+  .heroButtons {
+    grid-auto-flow: row;
+  }
 }
 
 @keyframes pixelBounce {
@@ -149,6 +159,8 @@
   font-family: var(--pixel-font);
   font-size: 24px;
   font-weight: bold;
+  letter-spacing: 1.4px;
+  text-align: center;
   background-color: var(--ifm-color-primary-dark);
   color: #fff;
   text-decoration: none;
@@ -168,6 +180,8 @@
   font-family: var(--pixel-font);
   font-size: 24px;
   font-weight: bold;
+  letter-spacing: 1.2px;
+  text-align: center;
   border: 2px solid var(--ifm-color-emphasis-300);
   background-color: var(--ifm-color-emphasis-100);
   color: var(--ifm-font-color-base);
