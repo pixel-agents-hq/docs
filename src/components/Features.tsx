@@ -4,28 +4,28 @@ import styles from './Features.module.css';
 
 const features = [
   {
-    title: 'Get Started',
+    title: 'Start',
     description:
-      'Install the extension, set up Claude Code, and spawn your first agent in minutes.',
-    link: '/start/install',
+      'Install the extension or the standalone CLI, and spawn your first agent in minutes.',
+    link: '/start/what-is-pixel-agents',
   },
   {
-    title: 'Assets',
+    title: 'Learn',
     description:
-      'Explore characters, furniture, walls, and floors — or create your own custom asset packs.',
-    link: '/build/assets/overview',
+      'The mental models behind the office: concepts, architecture, and the protocol.',
+    link: '/learn/',
   },
   {
-    title: 'Contributing',
+    title: 'Use',
     description:
-      'Learn how to contribute to Pixel Agents — from bug reports to new features and asset packs.',
-    link: '/community/contributing',
+      'Task-oriented guides for VS Code and the standalone CLI.',
+    link: '/use/',
   },
   {
-    title: 'Roadmap',
+    title: 'Build',
     description:
-      "See where Pixel Agents is headed — agent-agnostic adapters, deep inspection, token health bars, and more.",
-    link: '/community/roadmap',
+      'Extend Pixel Agents with a new provider, client, adapter, or custom asset pack.',
+    link: '/build/',
   },
 ];
 
