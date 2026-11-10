@@ -19,19 +19,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 22
-      - uses: pnpm/action-setup@v6
-        with:
-          version: 10
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm run build
+      # The site moved to pixel-agents.com. Pages serves only the redirect
+      # (index.html for the root, 404.html for every other path); the
+      # Docusaurus source stays in the repo, unbuilt.
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: build
+          path: redirect
 
   deploy:
     environment:
